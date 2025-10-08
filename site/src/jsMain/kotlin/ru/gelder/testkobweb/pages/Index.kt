@@ -19,9 +19,17 @@ import ru.gelder.testkobweb.components.widgets.TopScrollButton
 fun HomePage() {
     Box(Modifier.fillMaxWidth()) {
         Column(
-            modifier = Modifier.fillMaxWidth().backgroundColor(Color.blue).height(3000.px)
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
-
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.blue))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.cyan))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.blue))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.cyan))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.blue))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.cyan))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.blue))
+            Box(Modifier.fillMaxWidth().height(300.px).backgroundColor(Color.cyan))
         }
         TopScrollButton()
     }

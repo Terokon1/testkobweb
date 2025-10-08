@@ -23,6 +23,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 
+val NAV_HEADER_HEIGHT = 80.px
 val NavHeaderStyle = CssStyle.base {
     Modifier
         .fillMaxWidth()
@@ -30,7 +31,7 @@ val NavHeaderStyle = CssStyle.base {
         .top(0.px)
         .padding(1.cssRem)
         .zIndex(99)
-        .height(80.px)
+        .height(NAV_HEADER_HEIGHT)
         .backgroundColor(Color.white)
 }
 
@@ -92,7 +93,7 @@ private fun NavigationItems() {
 private fun Phone() {
     Row {
         FaPhone()
-        Text("+7 999 99-99-99")
+        Text("+7 (999) 99-99-99")
     }
 }
 
@@ -109,7 +110,7 @@ private fun RequestButton() {
     Button(
         {
 
-    }
+        }
     ) {
         Text("Оставить заявку")
     }
