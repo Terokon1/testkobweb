@@ -1,9 +1,9 @@
 package ru.gelder.testkobweb.components.sections
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -16,12 +16,12 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.Color
-import org.jetbrains.compose.web.css.Position
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.H4
+import org.jetbrains.compose.web.dom.Nav
 import org.jetbrains.compose.web.dom.Text
+import ru.gelder.testkobweb.SitePalette
 
 val NAV_HEADER_HEIGHT = 80.px
 val NavHeaderStyle = CssStyle.base {
@@ -33,19 +33,19 @@ val NavHeaderStyle = CssStyle.base {
         .zIndex(99)
         .height(NAV_HEADER_HEIGHT)
         .backgroundColor(Color.white)
+        .gap(1.cssRem)
 }
 
 @Composable
 fun NavHeader() {
     Row(
         NavHeaderStyle.toModifier(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
         Logo()
         Name()
-        Spacer()
         NavigationItems()
-        Spacer()
         Phone()
         Email()
         RequestButton()
@@ -54,22 +54,22 @@ fun NavHeader() {
 
 @Composable
 fun Logo() {
-    Image("/TestLogo.png", modifier = Modifier.size(40.px))
+    Image("/TestLogo.png", modifier = Modifier.size(60.px))
 }
 
-val TitleStyle = CssStyle.base { Modifier }
+val TitleStyle = CssStyle.base { Modifier.margin(bottom = 0.5.cssRem).color(SitePalette.theme.primary) }
 
 val DescriptionStyle = CssStyle.base { Modifier }
 
 @Composable
 fun Name() {
     Column(modifier = Modifier) {
-        Div(TitleStyle.toAttrs()) { Text("Гельдер Финанс") }
+        H4(TitleStyle.toAttrs()) { Text("ГельдерФинанс") }
         Div(DescriptionStyle.toAttrs()) { Text("Кредиты под залог") }
     }
 }
 
-val NavItemsStyle = CssStyle.base { Modifier.gap(1.cssRem) }
+val NavItemsStyle = CssStyle.base { Modifier.display(DisplayStyle.Flex).gap(1.cssRem) }
 
 @Composable
 fun NavItem(text: String, anchorId: String) {
@@ -81,7 +81,7 @@ fun NavItem(text: String, anchorId: String) {
 
 @Composable
 private fun NavigationItems() {
-    Row(modifier = NavItemsStyle.toModifier()) {
+    Nav(attrs = NavItemsStyle.toAttrs()) {
         NavItem("О нас", "")
         NavItem("Калькулятор", "")
         NavItem("Заявка", "")
