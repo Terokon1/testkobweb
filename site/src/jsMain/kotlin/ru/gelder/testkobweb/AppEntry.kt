@@ -17,10 +17,34 @@ import kotlinx.browser.localStorage
 
 @InitSilk
 fun initStyles(ctx: InitSilkContext) {
-    ctx.stylesheet.registerStyleBase("html, body") { Modifier.fillMaxHeight() }
-    ctx.stylesheet.registerStyleBase("body") { Modifier }
-}
+    ctx.stylesheet.registerStyleBase("html, body") {
+        Modifier
+            .fillMaxHeight()
+    }
+    ctx.stylesheet.registerStyleBase("body") {
+        Modifier
+    }
 
+    // Global responsive styles
+    ctx.stylesheet.registerStyleBase("*") {
+        Modifier
+    }
+
+    // Smooth scrolling
+    ctx.stylesheet.registerStyleBase("html") {
+        Modifier
+    }
+
+    // Default link styles
+    ctx.stylesheet.registerStyleBase("a") {
+        Modifier
+    }
+
+    // Responsive container max-widths
+    ctx.stylesheet.registerStyleBase(".container") {
+        Modifier
+    }
+}
 
 @App
 @Composable
